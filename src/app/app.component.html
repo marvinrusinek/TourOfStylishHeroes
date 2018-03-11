@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+      <button mat-icon-button (click)="mainSideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{title}}</span>
+      <router-outlet></router-outlet>
+</mat-toolbar>
+
+<div class="content" fxLayout="column" fxFlex [class]="activeTheme">
+  <mat-sidenav-container fxFlex>
+    <mat-sidenav mode="side" opened #mainSideNav>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+          <mat-icon>info</mat-icon>
+          <span>Dashboard</span>
+        </a>
+        <a mat-list-item routerLink="/heroes" routerLinkActive="active">
+          <mat-icon>info</mat-icon>
+          <span>Heroes</span>
+        </a>
+      </mat-nav-list>
+      <mat-menu #themeMenu x-position="before">
+        <button mat-menu-item (click)="activeTheme = ''">Regular Hero</button>
+        <button mat-menu-item (click)="activeTheme = 'darkside-hero-theme'">Darkside Hero</button>
+        <button mat-menu-item (click)="activeTheme = 'baby-hero-theme'">Baby Hero</button>
+      </mat-menu>
+  </mat-sidenav>
+  </mat-sidenav-container>
+  <button mat-icon-button [matMenuTriggerFor]="themeMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <span fxFlex></span>
+</div>
